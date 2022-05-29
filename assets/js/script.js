@@ -1,3 +1,8 @@
+var btnSpaceX = document.querySelector("#spaceX");
+var btnNASA = document.querySelector("#nasa");
+var btnBlueOrigin = document.querySelector("#blueOrigin");
+var btnContainer = document.querySelector("#interactive")
+
 // THIS ENDPOINT IS PULLING 10 MOST RECENT ISS DAILY REPORTS 
 var getSpaceReports = function() {
     // format the github api url
@@ -23,16 +28,16 @@ var getSpaceReports = function() {
   };
 
 // THIS ENDPOINT IS PULLING 10 MOST RECENT SPACEX LAUNCHES
-var getSpaceXLaunches = function() {
+var getSpaceLaunches = function(spaceClub) {
+    //event.preventDefault();
     // format the github api url
-    var apiUrl = "https://ll.thespacedevs.com/2.2.0/launch/?mode=list&search="+eventID+";
+    var apiUrl = "https://ll.thespacedevs.com/2.2.0/launch/?mode=list&search="+spaceClub;
   
     // make a get request to url
     fetch(apiUrl)
       .then(function(response) {
         // request was successful
         if (response.ok) {
-          console.log(response);
           response.json().then(function(data) {
             console.log(data);
             //function with data input that updates HTML element and appends to page
@@ -46,30 +51,20 @@ var getSpaceXLaunches = function() {
       });
   };
 
-  // THIS ENDPOINT IS PULLING 10 MOST RECENT NASA LAUNCHES
-var getNASALaunches = function() {
-    // format the github api url
-    var apiUrl = "https://ll.thespacedevs.com/2.2.0/launch/?mode=list&search=NASA";
-  
-    // make a get request to url
-    fetch(apiUrl)
-      .then(function(response) {
-        // request was successful
-        if (response.ok) {
-          console.log(response);
-          response.json().then(function(data) {
-            console.log(data);
-            //function with data input that updates HTML element and appends to page
-          });
-        } else {
-          alert('Error: API Endpoint Not Found');
-        }
-      })
-      .catch(function(error) {
-        alert("Unable to connect to API");
-      });
+  //blue origin button handler
+  var BlueOriginHandler = function() {
+      getSpaceLaunches("Blue Origin");
+  };
+//spaceX button handler
+  var spaceXHandler = function() {
+      getSpaceLaunches("SpaceX");
+  };
+//nasa button handler
+  var nasaHandler = function() {
+      getSpaceLaunches("NASA");
   };
 
-//getSpaceReports();
-//getSpaceXLaunches();
-getNASALaunches();
+//EVENT LISTENER
+btnBlueOrigin.addEventListener("click", BlueOriginHandler);
+btnNASA.addEventListener("click", spaceXHandler);
+btnSpaceX.addEventListener("click", nasaHandler); 
