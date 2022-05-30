@@ -58,7 +58,7 @@ var getSpaceLaunches = function(spaceClub) {
           response.json().then(function(data) {
             console.log(data);
             //function with data input that updates HTML element and appends to page
-            for (i=1; i<=4; i++) {
+            for (i=0; i<=4; i++) {
               var createEl = document.createElement("div");
 
               var spaceNewsTitle = data.results[i].name;
