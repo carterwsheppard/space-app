@@ -1,1 +1,6 @@
-* {background-color: rgb(144, 162, 222)}
+.button.tertiary {
+    background-color: #ffae00;
+}
+.button.tertiary:hover {
+    background-color: #d29000;
+}

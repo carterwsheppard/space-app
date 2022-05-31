@@ -44,6 +44,25 @@ var getSpaceReports = function() {
       });
   };
 
+// GET NASA Images Library for Header background  
+// var getNasaImages = function() {
+//   ///event.preventDefault();
+//   fetch("https://images-api.nasa.gov/album/apollo")
+//     .then(function(response) {
+//       // response was successful
+//       if(response.ok) {
+//         response.json().then(function(data) {
+//           console.log(data);
+//         });
+//       } else {
+//         alert("NASA images did not load.");
+//       }
+//     });
+// }
+
+
+
+
 // THIS ENDPOINT IS PULLING 10 MOST RECENT SPACEX LAUNCHES
 var getSpaceLaunches = function(spaceClub) {
     //event.preventDefault();
@@ -96,7 +115,9 @@ var getSpaceLaunches = function(spaceClub) {
   };
 
 //EVENT LISTENER
+//getNasaImages();
 btnBlueOrigin.addEventListener("click", BlueOriginHandler);
 btnNASA.addEventListener("click", spaceXHandler);
 btnSpaceX.addEventListener("click", nasaHandler); 
 getSpaceReports();
+
