@@ -31,7 +31,7 @@ var getSpaceReports = function() {
               //UPDATE CLASSES BASED ON HOGAN'S STYLE SHEET DECISIONS
               createEl.classList = "";
               createEl.setAttribute("id",ISSlink)
-              createEl.innerHTML = "<h2>"+ISStitle+"</h2> <a href='"+ISSlink+"'>Report Link</a> <p>"+ISSsummary+"</p>" ;
+              createEl.innerHTML = "<h2><a href='"+ISSlink+"'>"+ISStitle+"</a></h2> <p class='text-justify text-padding'>"+ISSsummary+"</p>" ;
               ISSContainer.appendChild(createEl);
             };
           });
@@ -43,6 +43,25 @@ var getSpaceReports = function() {
         alert("Unable to connect to API");
       });
   };
+
+// GET NASA Images Library for Header background  
+var getNasaImages = function() {
+  ///event.preventDefault();
+  fetch("https://images-api.nasa.gov/album/apollo")
+    .then(function(response) {
+      // response was successful
+      if(response.ok) {
+        response.json().then(function(data) {
+          console.log(data);
+        });
+      } else {
+        alert("NASA images did not load.");
+      }
+    });
+}
+
+
+
 
 // THIS ENDPOINT IS PULLING 10 MOST RECENT SPACEX LAUNCHES
 var getSpaceLaunches = function(spaceClub) {
@@ -58,7 +77,7 @@ var getSpaceLaunches = function(spaceClub) {
           response.json().then(function(data) {
             console.log(data);
             //function with data input that updates HTML element and appends to page
-            for (i=0; i<=4; i++) {
+            for (i=0; i<=9; i++) {
               var createEl = document.createElement("div");
 
               var spaceNewsTitle = data.results[i].name;
@@ -69,7 +88,7 @@ var getSpaceLaunches = function(spaceClub) {
               //UPDATE CLASSES BASED ON HOGAN'S STYLE SHEET DECISIONS
               createEl.classList = "";
               createEl.setAttribute("id",spaceNewsLink)
-              createEl.innerHTML = "<h2>"+spaceNewsTitle+"</h2> <a href='"+spaceNewsLink+"'>Report Link</a> <p>"+spaceNewsStatus+"</p>" ;
+              createEl.innerHTML = "<h2><a href='"+spaceNewsLink+"'>"+spaceNewsTitle+" </a></h2> <p>"+spaceNewsStatus+"</p>" ;
               spaceNewsContainer.appendChild(createEl);
             };
           });
@@ -86,4 +105,6 @@ var getSpaceLaunches = function(spaceClub) {
 btnContainer.addEventListener("click", function(event) {
   getSpaceLaunches(event.target.textContent);
 })
+
 getSpaceReports();
+

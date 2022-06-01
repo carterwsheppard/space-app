@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,35 +11,41 @@
     <title>Document</title>
 
 </head>
+
 <body>
     <header>
-        <H1>Aerospace News and Events</H1>
-           <!--section spanning across liner *BANNER* with buttons to select from-->
-    <div id="interactive">
-        <button id="spaceX" type="submit" class="btn">SpaceX</button>
-        <button id="nasa" type="submit" class="btn">NASA</button>
-        <button id="blueOrigin" type="submit" class="btn">Blue Origin</button>
-    </div>
+        <H1 class="text-center">Aerospace News and Events</H1>
+        <!--section spanning across liner *BANNER* with buttons to select from-->
+        <div class="grid-container fluid">
+            <div id="interactive" class="grid-x">
+                <button id="spaceX" type="submit" class="btn button secondary cell medium-4 large-4">SpaceX</button>
+                <button id="nasa" type="submit" class="btn button primary cell medium-4 large-4">NASA</button>
+                <button id="blueOrigin" type="submit" class="btn button tertiary cell medium-4 large-4">Blue
+                    Origin</button>
+            </div>
+        </div>
     </header>
 
 
-<main>
+    <main>
+        <!--section for space launches based on the button we pick(SIDE BY SIDE WITH ABOVE)-->
+        <div id="spaceLaunches" class="text-center">
+            
+        </div>
+        
+        <!--section for ISS Daily Updates (SIDE BY SIDE WITH BELOW)-->
+        <div id="issNews" class="text-center">
+            
+        </div>
 
-  <!--section for ISS Daily Updates (SIDE BY SIDE WITH BELOW)-->
-    <div id="issNews">
-        <p class="">TEST 1</p>
-    </div>
 
-    <!--section for space launches based on the button we pick(SIDE BY SIDE WITH ABOVE)-->
-    <div id="spaceLaunches">
-        <p class="">TEST 2</p>
-    </div>
 
-</main>
-    
-   <!-- <footer>
+    </main>
+
+    <!-- <footer>
         <p>Footer Placeholder</p>
     </footer>-->
     <script src="./assets/js/script.js"></script>
 </body>
+
 </html>
