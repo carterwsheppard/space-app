@@ -4,3 +4,6 @@
 .button.tertiary:hover {
     background-color: #d29000;
 }
+.text-padding {
+    padding: 0 5%;
+}
