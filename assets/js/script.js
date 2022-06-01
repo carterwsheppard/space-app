@@ -101,23 +101,10 @@ var getSpaceLaunches = function(spaceClub) {
       });
   };
 
-  //blue origin button handler
-  var BlueOriginHandler = function() {
-      getSpaceLaunches("Blue Origin");
-  };
-//spaceX button handler
-  var spaceXHandler = function() {
-      getSpaceLaunches("SpaceX");
-  };
-//nasa button handler
-  var nasaHandler = function() {
-      getSpaceLaunches("NASA");
-  };
-
 //EVENT LISTENER
-// getNasaImages();
-btnBlueOrigin.addEventListener("click", BlueOriginHandler);
-btnNASA.addEventListener("click", spaceXHandler);
-btnSpaceX.addEventListener("click", nasaHandler); 
+btnContainer.addEventListener("click", function(event) {
+  getSpaceLaunches(event.target.textContent);
+})
+
 getSpaceReports();
 
