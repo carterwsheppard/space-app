@@ -58,7 +58,7 @@ var getSpaceLaunches = function(spaceClub) {
           response.json().then(function(data) {
             console.log(data);
             //function with data input that updates HTML element and appends to page
-            for (i=1; i<=4; i++) {
+            for (i=0; i<=4; i++) {
               var createEl = document.createElement("div");
 
               var spaceNewsTitle = data.results[i].name;
@@ -82,21 +82,8 @@ var getSpaceLaunches = function(spaceClub) {
       });
   };
 
-  //blue origin button handler
-  var BlueOriginHandler = function() {
-      getSpaceLaunches("Blue Origin");
-  };
-//spaceX button handler
-  var spaceXHandler = function() {
-      getSpaceLaunches("SpaceX");
-  };
-//nasa button handler
-  var nasaHandler = function() {
-      getSpaceLaunches("NASA");
-  };
-
 //EVENT LISTENER
-btnBlueOrigin.addEventListener("click", BlueOriginHandler);
-btnNASA.addEventListener("click", spaceXHandler);
-btnSpaceX.addEventListener("click", nasaHandler); 
+btnContainer.addEventListener("click", function(event) {
+  getSpaceLaunches(event.target.textContent);
+})
 getSpaceReports();
