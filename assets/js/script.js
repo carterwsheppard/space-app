@@ -6,6 +6,7 @@ var ISSContainer = document.querySelector("#issNews");
 var spaceNewsContainer = document.querySelector("#spaceLaunches");
 var headerSectionContainer = document.querySelector("#headersection");
 
+var savedContent;
 
 // THIS ENDPOINT IS PULLING 10 MOST RECENT ISS DAILY REPORTS 
 var getSpaceReports = function() {
@@ -108,6 +109,8 @@ var getSpaceLaunches = function(spaceClub) {
 btnContainer.addEventListener("click", function(event) {
   //console.log(event.target.id);
 
+  saveContent(event.target.id);
+
   if (event.target.id == 'iss') {
       ISSContainer.innerHTML = '';
       spaceNewsContainer.innerHTML = '';
@@ -120,6 +123,27 @@ btnContainer.addEventListener("click", function(event) {
   }
 });
 
-getSpaceReports();
+
+var saveContent = function(content) {
+  savedContent = content;
+  localStorage.setItem("saved", savedContent);
+}
+
+var loadContent = function() {
+ var lastSave = localStorage.getItem("saved");
+
+ if(lastSave != null) {
+  if(lastSave == "iss") {
+    getSpaceReports();
+  }
+  else {
+    getSpaceLaunches(lastSave);
+  }
+ }
+ else {
+   getSpaceReports();
+ }
+}
+loadContent();
 //getNasaImages();
 
