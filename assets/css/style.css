@@ -7,3 +7,9 @@
 .text-padding {
     padding: 0 5%;
 }
+#headersection {
+    background-image: url('../../assets/images/spacebanner.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}

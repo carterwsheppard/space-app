@@ -4,7 +4,9 @@ var btnBlueOrigin = document.querySelector("#blueOrigin");
 var btnContainer = document.querySelector("#interactive");
 var ISSContainer = document.querySelector("#issNews");
 var spaceNewsContainer = document.querySelector("#spaceLaunches");
+var headerSectionContainer = document.querySelector("#headersection");
 
+var savedContent;
 
 // THIS ENDPOINT IS PULLING 10 MOST RECENT ISS DAILY REPORTS 
 var getSpaceReports = function() {
@@ -20,7 +22,7 @@ var getSpaceReports = function() {
           response.json().then(function(data) {
             console.log(data);
             //function with data input that updates HTML element and appends to page
-            for (i=0; i<=4; i++) {
+            for (i=0; i<=9; i++) {
               var createEl = document.createElement("div");
 
               var ISStitle = data[i].title
@@ -45,20 +47,23 @@ var getSpaceReports = function() {
   };
 
 // GET NASA Images Library for Header background  
-var getNasaImages = function() {
+//var getNasaImages = function() {
   ///event.preventDefault();
-  fetch("https://images-api.nasa.gov/album/apollo")
-    .then(function(response) {
+  //fetch("https://images-api.nasa.gov/album/apollo")
+  //fetch("https://api.spaceflightnewsapi.net/v3/reports")
+   // .then(function(response) {
       // response was successful
-      if(response.ok) {
-        response.json().then(function(data) {
-          console.log(data);
-        });
-      } else {
-        alert("NASA images did not load.");
-      }
-    });
-}
+     // if(response.ok) {
+       // response.json().then(function(data) {
+         // console.log(data[1].imageUrl);
+          //var imageLink = data[1].imageUrl;
+          //headerSectionContainer.style.backgroundImage = `url(${imageLink})`
+            //    });
+     // } else {
+       // alert("NASA images did not load.");
+     // }
+ //   });
+//}
 
 
 
@@ -89,9 +94,8 @@ var getSpaceLaunches = function(spaceClub) {
               createEl.classList = "";
               createEl.setAttribute("id",spaceNewsLink)
               createEl.innerHTML = "<h2><a href='"+spaceNewsLink+"'>"+spaceNewsTitle+" </a></h2> <p>"+spaceNewsStatus+"</p>" ;
-              spaceNewsContainer.appendChild(createEl);
-            };
-          });
+              spaceNewsContainer.appendChild(createEl)
+          }});
         } else {
           alert('Error: API Endpoint Not Found');
         }
@@ -103,7 +107,43 @@ var getSpaceLaunches = function(spaceClub) {
 
 //EVENT LISTENER
 btnContainer.addEventListener("click", function(event) {
-  getSpaceLaunches(event.target.textContent);
-})
-getSpaceReports();
+  //console.log(event.target.id);
+
+  saveContent(event.target.id);
+
+  if (event.target.id == 'iss') {
+      ISSContainer.innerHTML = '';
+      spaceNewsContainer.innerHTML = '';
+      getSpaceReports();
+  }
+  else {
+    ISSContainer.innerHTML = '';
+    spaceNewsContainer.innerHTML = '';
+    getSpaceLaunches(event.target.textContent);
+  }
+});
+
+
+var saveContent = function(content) {
+  savedContent = content;
+  localStorage.setItem("saved", savedContent);
+}
+
+var loadContent = function() {
+ var lastSave = localStorage.getItem("saved");
+
+ if(lastSave != null) {
+  if(lastSave == "iss") {
+    getSpaceReports();
+  }
+  else {
+    getSpaceLaunches(lastSave);
+  }
+ }
+ else {
+   getSpaceReports();
+ }
+}
+loadContent();
+//getNasaImages();
 
