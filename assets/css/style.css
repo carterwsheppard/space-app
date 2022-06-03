@@ -1,15 +1,40 @@
+
 .button.tertiary {
     background-color: #ffae00;
 }
 .button.tertiary:hover {
     background-color: #d29000;
 }
+.btn {
+    opacity: 0.75;
+}
 .text-padding {
     padding: 0 5%;
 }
-#headersection {
+.banner-background {
     background-image: url('../../assets/images/spacebanner.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+.h1-title {
+    color: white;
+}
+.footer {
+    height: 100px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+}
+.footer p {
+    position: relative;
+    top: 50%;
+}
+.footer-links {
+    color: white;
+    text-decoration: underline;
+}
+.footer-links:hover {
+    color: #ffae00;
+    font-style: italic;
 }
