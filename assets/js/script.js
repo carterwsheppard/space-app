@@ -1,3 +1,4 @@
+// html element references
 var btnSpaceX = document.querySelector("#spaceX");
 var btnNASA = document.querySelector("#nasa");
 var btnBlueOrigin = document.querySelector("#blueOrigin");
@@ -6,6 +7,7 @@ var ISSContainer = document.querySelector("#issNews");
 var spaceNewsContainer = document.querySelector("#spaceLaunches");
 var headerSectionContainer = document.querySelector("#headersection");
 
+// local save variable
 var savedContent;
 
 // THIS ENDPOINT IS PULLING 10 MOST RECENT ISS DAILY REPORTS 
@@ -25,6 +27,7 @@ var getSpaceReports = function() {
             for (i=0; i<=9; i++) {
               var createEl = document.createElement("div");
 
+              // variables for api data
               var ISStitle = data[i].title
               var ISSsummary = data[i].summary
               var ISSlink = data[i].url 
@@ -85,6 +88,7 @@ var getSpaceLaunches = function(spaceClub) {
             for (i=0; i<=9; i++) {
               var createEl = document.createElement("div");
 
+              // variables for api data
               var spaceNewsTitle = data.results[i].name;
               var spaceNewsStatus = data.results[i].status.description;
               var spaceNewsLink = data.results[i].url;
@@ -111,28 +115,34 @@ btnContainer.addEventListener("click", function(event) {
 
   saveContent(event.target.id);
 
+  // get iss news
   if (event.target.id == 'iss') {
-      ISSContainer.innerHTML = '';
-      spaceNewsContainer.innerHTML = '';
-      getSpaceReports();
+    // reset container content
+    ISSContainer.innerHTML = '';
+    spaceNewsContainer.innerHTML = '';
+    getSpaceReports();
   }
   else {
+    // reset container content
     ISSContainer.innerHTML = '';
     spaceNewsContainer.innerHTML = '';
     getSpaceLaunches(event.target.textContent);
   }
 });
 
-
+// save a 'save state' to come back to
 var saveContent = function(content) {
   savedContent = content;
   localStorage.setItem("saved", savedContent);
 }
 
+// load saved content from local storage
 var loadContent = function() {
  var lastSave = localStorage.getItem("saved");
 
+ // if it is user's first time to the site, then no local storage save, so load default
  if(lastSave != null) {
+  // check what type of info was saved 
   if(lastSave == "iss") {
     getSpaceReports();
   }
@@ -144,6 +154,7 @@ var loadContent = function() {
    getSpaceReports();
  }
 }
+
 loadContent();
 //getNasaImages();
 
