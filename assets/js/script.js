@@ -31,7 +31,7 @@ var getSpaceReports = function() {
               var ISSimage = data[i].imageUrl
 
               //UPDATE CLASSES BASED ON HOGAN'S STYLE SHEET DECISIONS
-              createEl.classList = "";
+              createEl.classList = "reports";
               createEl.setAttribute("id",ISSlink)
               createEl.innerHTML = "<h2><a href='"+ISSlink+"'>"+ISStitle+"</a></h2> <p class='text-justify text-padding'>"+ISSsummary+"</p>" ;
               ISSContainer.appendChild(createEl);
@@ -91,7 +91,7 @@ var getSpaceLaunches = function(spaceClub) {
              
 
               //UPDATE CLASSES BASED ON HOGAN'S STYLE SHEET DECISIONS
-              createEl.classList = "";
+              createEl.classList = "reports";
               createEl.setAttribute("id",spaceNewsLink)
               createEl.innerHTML = "<h2><a href='"+spaceNewsLink+"'>"+spaceNewsTitle+" </a></h2> <p>"+spaceNewsStatus+"</p>" ;
               spaceNewsContainer.appendChild(createEl)
