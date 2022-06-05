@@ -6,10 +6,15 @@ I WANT a website that can give me recent news and space events information
 Technical Tools:
 
 HTML
+
 CSS
+
 Foundation (CSS API / Library)
+
 JavaScript
+
 API: https://ll.thespacedevs.com/
+
 API: https://api.spaceflightnewsapi.net/
 
 Requirements: 
