@@ -41,11 +41,11 @@ var getSpaceReports = function() {
             };
           });
         } else {
-          alert('Error: API Endpoint Not Found');
+          console.log('Error: API Endpoint Not Found');
         }
       })
       .catch(function(error) {
-        alert("Unable to connect to API");
+        console.log("Unable to connect to API");
       });
   };
 
@@ -101,11 +101,11 @@ var getSpaceLaunches = function(spaceClub) {
               spaceNewsContainer.appendChild(createEl)
           }});
         } else {
-          alert('Error: API Endpoint Not Found');
+          console.log('Error: API Endpoint Not Found');
         }
       })
       .catch(function(error) {
-        alert("Unable to connect to API");
+        console.log("Unable to connect to API");
       });
   };
 
